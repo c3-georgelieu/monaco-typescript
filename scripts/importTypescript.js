@@ -85,6 +85,16 @@ export var IndentStyle = ts.IndentStyle;
 export var ScriptKind = ts.ScriptKind;
 export var ScriptTarget = ts.ScriptTarget;
 export var TokenClass = ts.TokenClass;
+
+export var createPrinter = ts.createPrinter;
+export var visitEachChild = ts.visitEachChild;
+export var isVariableDeclaration = ts.isVariableDeclaration;
+export var getMutableClone = ts.getMutableClone;
+export var createLiteral = ts.createLiteral;
+export var isCallExpression = ts.isCallExpression;
+export var visitNode = ts.visitNode;
+export var transform = ts.transform;
+export var NewLineKind = ts.NewLineKind;
 // END MONACOCHANGE
 `;
 	fs.writeFileSync(path.join(TYPESCRIPT_LIB_DESTINATION, 'typescriptServices.js'), tsServices_esm);
