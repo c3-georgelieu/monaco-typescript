@@ -189,7 +189,7 @@ var TypeScriptWorker = /** @class */ (function () {
         this._extraLibs = extraLibs;
     };
     // Console UI Additions:
-    TypeScriptWorker.prototype.generatedUpdatedCode = function (fileName, lineNumber, startColumn, endColumn, newValue, paramIndex) {
+    TypeScriptWorker.prototype._getUpdatedCode = function (fileName, lineNumber, startColumn, endColumn, newValue, paramIndex) {
         var sourceFile = this._languageService.getProgram().getSourceFile(fileName);
         var printer = ts.createPrinter({
             newLine: ts.NewLineKind.LineFeed,
@@ -230,7 +230,7 @@ var TypeScriptWorker = /** @class */ (function () {
         return printer.printFile(updatedSourceFile);
     };
     TypeScriptWorker.prototype.getUpdatedCode = function (fileName, lineNumber, startColumn, endColumn, newValue, paramIndex) {
-        return Promise.resolve(this.generatedUpdatedCode(fileName, lineNumber, startColumn, endColumn, newValue, paramIndex));
+        return Promise.resolve(this._getUpdatedCode(fileName, lineNumber, startColumn, endColumn, newValue, paramIndex));
     };
     return TypeScriptWorker;
 }());

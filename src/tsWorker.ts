@@ -236,7 +236,7 @@ export class TypeScriptWorker implements ts.LanguageServiceHost, monaco.language
 
 	// Console UI Additions:
 
-	generatedUpdatedCode(fileName: string, lineNumber: number, startColumn: number, endColumn: number, newValue: number, paramIndex?: number): string {
+	_getUpdatedCode(fileName: string, lineNumber: number, startColumn: number, endColumn: number, newValue: number, paramIndex?: number): string {
 		let sourceFile = this._languageService.getProgram()!.getSourceFile(fileName);
 		let printer = ts.createPrinter({
 			newLine: ts.NewLineKind.LineFeed,
@@ -285,7 +285,7 @@ export class TypeScriptWorker implements ts.LanguageServiceHost, monaco.language
 	}
 
 	getUpdatedCode(fileName: string, lineNumber: number, startColumn: number, endColumn: number, newValue: number, paramIndex?: number): Promise<string> {
-		return Promise.resolve(this.generatedUpdatedCode(fileName, lineNumber, startColumn, endColumn, newValue, paramIndex));
+		return Promise.resolve(this._getUpdatedCode(fileName, lineNumber, startColumn, endColumn, newValue, paramIndex));
 	}
 }
 
